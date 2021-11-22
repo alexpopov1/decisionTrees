@@ -87,13 +87,13 @@ private:
 	
 	// Entropy methods
 	double selfInfo(double p){return -log2(p);}   // self-information
-	double entropy(double p);      		      // Shannon entropy
-	PROB prob(int ftrNr);           	      // map of relevant probabilities
-	double avEntropy(int ftrNr); 		      // average entropy
+	double entropy(double p);      		          // Shannon entropy
+	PROB prob(int ftrNr);           	      	  // map of relevant probabilities
+	double avEntropy(int ftrNr); 		    	  // average entropy
 	
 public:
 	// Constructors
-	BoolTable() {}   		// default constructor
+	BoolTable() {}   				// default constructor
 	BoolTable(BOOL_DATA dt)         // initialisation
 	: BoolExample(dt[0]), data(dt) 
 	{
@@ -105,7 +105,7 @@ public:
 
 	// Access methods
 	int nrExmpls() {return data.size();}    // number of examples in dataset
-	int nrFtrs();    			// number of features in dataset
+	int nrFtrs();    						// number of features in dataset
 	void addExmpl(BoolExample exmpl);       // add example to dataset
 
 	// Display table of data
@@ -123,10 +123,10 @@ public:
 	// Tree building methods
 	int splitPnt();             	                  // best point to split tree
 	std::pair<BoolTable, BoolTable> split(int pnt);   // construct two children of node
-	OUT_PAIR outputCheck();		                  // returns example outputs at current node, as well as
-				         		    // boolean indicating whether all output values are the same
-	bool uniformInputs();         			  // returns true if all examples have matching inputs
-	bool stopVal();               			  // output value held by majority of matching examples
+	OUT_PAIR outputCheck();		                      // returns example outputs at current node, as well as
+													     // boolean indicating whether all output values are the same
+	bool uniformInputs();         			  		  // returns true if all examples have matching inputs
+	bool stopVal();               			  		  // output value held by majority of matching examples
 	
 };
 

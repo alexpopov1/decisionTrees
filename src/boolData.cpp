@@ -55,11 +55,7 @@ double BoolTable::avEntropy(int ftrNr)
 	if (ftrNr < 0 || ftrNr >= nrFtrs())
 		throw std::out_of_range("Error: Attempt to access non-existent feature!\n");
 	PROB ps = prob(ftrNr);
-	double av = ps["all"] * entropy(ps["true"]) + (1-ps["all"]) * entropy(ps["false"]);
-	// std::cout << "av " << ftrNr << " = " << av << std::endl;
-	return av;
-	
-	//return ps["all"] * entropy(ps["true"]) + (1-ps["all"]) * entropy(ps["false"]);
+	return ps["all"] * entropy(ps["true"]) + (1-ps["all"]) * entropy(ps["false"]);
 }
 
 

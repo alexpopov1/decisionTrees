@@ -30,3 +30,38 @@ R_VALS NaiveBayes::findRVals()
 	return rValues;
 			
 }
+
+
+
+double NaiveBayes::R(int ftr, bool ftrVal, bool outVal)
+{
+	if (outVal)
+	{
+		if (ftrVal)
+			return rValues[ftr].first;
+		return 1 - rValues[ftr].first;
+	}
+		
+	if (ftrVal)
+		return rValues[ftr].second;
+	return 1 - rValues[ftr].second;
+}
+
+
+
+bool NaiveBayes::classify(BOOL_VEC input)
+{
+	double posScore = 0, ngScore = 0;
+	for (int i = 0; i < (int)input.size(); ++i)
+	{
+		posScore += log(R(i, input[i], true));
+		ngScore += log(R(i, input[i], false));
+	}
+	std::cout << "S(1) = " << posScore
+			<< "\nS(2) = " << ngScore
+			<< '\n';
+	
+	if (posScore > ngScore)
+		return true;
+	return false;
+}
