@@ -49,7 +49,7 @@ public:
 	BoolExample() {}    	  		   // default constructor
 
 	// Access methods
-	bool getOut() {return output;}   			// return output
+	bool getOut() {return output;}   			
 	BOOL_VEC getFtrs() {return ftrs;}
 	virtual int nrFtrs() {return ftrs.size();}  // number of features for example
 	
@@ -87,24 +87,25 @@ private:
 	
 	// Entropy methods
 	double selfInfo(double p){return -log2(p);}   // self-information
-	double entropy(double p);      				  // Shannon entropy
-	PROB prob(int ftrNr);        				  // map of relevant probabilities
-	double avEntropy(int ftrNr); 				  // average entropy
+	double entropy(double p);      		      // Shannon entropy
+	PROB prob(int ftrNr);           	      // map of relevant probabilities
+	double avEntropy(int ftrNr); 		      // average entropy
 	
 public:
 	// Constructors
-	BoolTable(BOOL_DATA dt)        // initialisation
+	BoolTable() {}   		// default constructor
+	BoolTable(BOOL_DATA dt)         // initialisation
 	: BoolExample(dt[0]), data(dt) 
 	{
 		for (int i = 1; i < (int)dt.size(); ++i)
 			if (dt[i].nrFtrs() != dt[0].nrFtrs())
 				throw std::invalid_argument("Error: Examples have different numbers of features!\n");
 	}
-	BoolTable() {}   			   // default constructor
+	
 
 	// Access methods
 	int nrExmpls() {return data.size();}    // number of examples in dataset
-	int nrFtrs();    						// number of features in dataset
+	int nrFtrs();    			// number of features in dataset
 	void addExmpl(BoolExample exmpl);       // add example to dataset
 
 	// Display table of data
@@ -120,12 +121,12 @@ public:
 	}	
 	
 	// Tree building methods
-	int splitPnt();             					  // best point to split tree
+	int splitPnt();             	                  // best point to split tree
 	std::pair<BoolTable, BoolTable> split(int pnt);   // construct two children of node
-	OUT_PAIR outputCheck();		// returns example outputs at current node, as well as
-								// boolean indicating whether all output values are the same
-	bool uniformInputs();       // returns true if all examples have matching inputs
-	bool stopVal();             // output value held by majority of matching examples
+	OUT_PAIR outputCheck();		                  // returns example outputs at current node, as well as
+				         		    // boolean indicating whether all output values are the same
+	bool uniformInputs();         			  // returns true if all examples have matching inputs
+	bool stopVal();               			  // output value held by majority of matching examples
 	
 };
 
