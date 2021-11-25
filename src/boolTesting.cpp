@@ -10,10 +10,16 @@
 
 #define f false
 #define t true
+
+
+
+
+
 #define L "-----------------------------------------------------\n"
 
 int main()
 {
+	
 	// Create examples
 	BoolExample a1({f, t, t, f}, f),
 				a2({t, f, t, t}, t),
@@ -58,7 +64,7 @@ int main()
 						<< i+1 << " *************\n\n";
 						
 			// Create training set
-			BoolTable trainingSet = BoolTable(data[i]);
+			BoolTable<BOOL_VEC> trainingSet = BoolTable<BOOL_VEC>(data[i]);
 			
 			// Display training set
 			trainingSet.display();
@@ -66,9 +72,11 @@ int main()
 			std::cout << "\nNumber of examples: "
 				<< trainingSet.nrExmpls() <<"\n\n";
 			
-			
+	
+				
+				
 			// Create decision tree from training set
-			DecisionTree tree(trainingSet);
+			DecisionTree<BOOL_VEC> tree(trainingSet);
 			std::cout << "----------------------------\n";
 			
 			// Classify new data using decision tree logic
@@ -93,6 +101,38 @@ int main()
 	//------------------------------------------------------------------------------------------------
 	
 	
+
+
+	
+
+	
+	std::vector<double> dataList{0.1, 0.2, 0.36, 0.45, 0.51, 0.8, 1.13, 1.29, 1.41};
+	std::vector<bool> outputs{t, t, f, f, t, t, t, f, f};
+	
+	print(dataList);
+	print(outputs);
+	std::cout << "\n\n";
+	DecisionTree<double> numberTree(dataList, outputs);
+	std::cout << "----------------------------\n";
+	
+	double in = 0.65;
+	std::cout << "Input: " << in << "\n\n";
+	bool result = numberTree.classify(in);
+	std::cout << "\nOutput: " << result << "\n\n\n\n";
+
+
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	// Banner
 	std::cout << "****************** NAIVE BAYES *****************\n\n";
 	
@@ -110,17 +150,18 @@ int main()
 	dataset[8] = B({t, t, f, t}, f);
 	dataset[9] = B({t, f, t, t}, f);
 	
-	BoolTable trainingSet(dataset);
+	BoolTable<BOOL_VEC> trainingSet(dataset);
 	trainingSet.display();
 	
 	
 	// Implement Naive Bayes
-	NaiveBayes naive(trainingSet);
+	NaiveBayes<BOOL_VEC> naive(trainingSet);
 	R_VALS rVals = naive.getRVals();
 	
 	BOOL_VEC input{t, t, t, t};
-	std::cout << "Input: "; print(input); std::cout << std::endl;
+	std::cout << "Input: "; print(input);
 	bool output = naive.classify(input);
-	std::cout << "\nOutput = " << output << std::endl;
+	std::cout << "Output = " << output << std::endl;
 	
 }
+
