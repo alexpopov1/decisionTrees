@@ -6,7 +6,7 @@
 #include <vector>
 #include <map>
 #include "tree.h"
-#include "naiveBayes.h"
+
 
 #define f false
 #define t true
@@ -119,49 +119,15 @@ int main()
 	std::cout << "Input: " << in << "\n\n";
 	bool result = numberTree.classify(in);
 	std::cout << "\nOutput: " << result << "\n\n\n\n";
-
-
 	
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	// Banner
-	std::cout << "****************** NAIVE BAYES *****************\n\n";
-	
-	// Create training set
-	typedef BoolExample B;
-	BOOL_DATA dataset(10);
-	dataset[0] = B({f, t, t, f}, t);
-	dataset[1] = B({f, f, t, t}, t);
-	dataset[2] = B({t, f, t, f}, t);
-	dataset[3] = B({f, f, t, t}, t);
-	dataset[4] = B({f, f, f, f}, t);
-	dataset[5] = B({t, f, f, t}, f);
-	dataset[6] = B({t, t, f, t}, f);
-	dataset[7] = B({t, f, f, f}, f);
-	dataset[8] = B({t, t, f, t}, f);
-	dataset[9] = B({t, f, t, t}, f);
-	
-	BoolTable<BOOL_VEC> trainingSet(dataset);
-	trainingSet.display();
-	
-	
-	// Implement Naive Bayes
-	NaiveBayes<BOOL_VEC> naive(trainingSet);
-	R_VALS rVals = naive.getRVals();
-	
-	BOOL_VEC input{t, t, t, t};
-	std::cout << "Input: "; print(input);
-	bool output = naive.classify(input);
-	std::cout << "Output = " << output << std::endl;
 	
 }
+
+
+	
+
+	
+	
+	
+	
 
