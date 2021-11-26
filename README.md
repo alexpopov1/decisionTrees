@@ -1,2 +1,2 @@
-# boolean-learning
-Library for using Boolean training data to learn how to classify new input data through decision tree learning or Naive Bayes classification.
+# decision-trees
+Repository for decision tree learning with Boolean or numerical training data.
