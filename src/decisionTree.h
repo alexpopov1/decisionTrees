@@ -11,16 +11,12 @@
 #include <unordered_map>
 #include <iostream>
 #include <stdexcept>
-#include <iomanip>       // std::setw(...)
-#include <cmath>         // pow(...)
-#include <algorithm>     // std::stable_sort(...)
-#include <numeric>       // std::iota(...);
-#include <limits>        // std::numeric_limits<double>::infinity();
-#include <iterator>      // std::advance(...)
-
-
-
-
+#include <iomanip>       // std::setw
+#include <cmath>         // log, pow
+#include <algorithm>     // std::stable_sort
+#include <numeric>       // std::iota
+#include <limits>        // std::numeric_limits<double>::infinity()
+#include <iterator>      // std::advance
 
 
 
@@ -28,8 +24,6 @@
 template<typename T, typename U>
 class TreeData
 {
-	
-	
 	// METHODS
 
 	// Sort a vector and returns the new order of the original indices
@@ -41,7 +35,6 @@ class TreeData
 			[&v](std::size_t i1, std::size_t i2) {return v[i1] < v[i2];});
 		return idx;
 	}
-	
 	
 	
 	// Transpose data vector of vectors (similar to matrix transpose)
@@ -56,7 +49,6 @@ class TreeData
 		}
 		return v;
 	}
-	
 	
 	
 	// Create member object 'indices'
@@ -81,9 +73,6 @@ class TreeData
 	}	
 	
 	
-	
-	
-	
 	// Create vector where each element is a vector for a given dimension. Each inner element contains the key for the 
 	// corresponding index in the indices map for that dimension, allowing us to locate a data point in the map based 
 	// on one iteration through the map at the start, instead of having to iterate the map for every new node.
@@ -101,15 +90,17 @@ class TreeData
 	
 	
 	
-	
-	
 
 protected:
 	
 	// NESTED CLASS
-
+	
+	// An object of this class stores the information necessary to describe a particular node 
+	// of a decision tree. This includes pointers to any nodes directly branching from the 
+	// current node, analogous to a linked list structure with at most two successors per node.
 	class TreeNode
 	{
+		// Member objects
 		std::pair<std::size_t, double> split;
 		bool leaf;
 		U val;
@@ -199,12 +190,6 @@ protected:
 	virtual void buildTree() = 0;
 
 
-
-
-
-
-
-
 	
 	// MEMBER OBJECTS
 	
@@ -221,7 +206,7 @@ protected:
 	// Vector indicating sorted position of each data point with respect to each dimension
 	std::vector< std::vector<std::size_t> > pntLocator;
 	
-	// D = # dimensions, N = #examples
+	// D = # dimensions, N = # examples
 	std::size_t D, N;    
 
 	// Pointer to TreeNode object representing the root node of the tree
@@ -230,7 +215,8 @@ protected:
 
 	
 public:
-
+	
+	// Constructor
 	TreeData(std::vector< std::vector<T> > dt, std::vector<U> out)
 	: data(dt), outputs(out)
 	{
@@ -240,6 +226,7 @@ public:
 	}
 	
 	
+	// Classify new input data using tree
 	U classify(std::vector<T> in)
 	{
 		TreeNode* node = root;
@@ -265,19 +252,14 @@ public:
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
+
 
 template<typename T, typename U>
 class ClassificationTree : public TreeData<T, U>
 {
 
-
+	// MEMBER OBJECTS
+	
 	// Vector of all unique classes to which an input can be classified
 	std::vector<U> classes;  
 	
@@ -288,6 +270,8 @@ class ClassificationTree : public TreeData<T, U>
 	std::size_t K;
 
 
+	// METHODS
+	
 	// Find all unique classes, and counts the number of instances of each
 	void findClasses()
 	{
@@ -297,7 +281,6 @@ class ClassificationTree : public TreeData<T, U>
 			classes.push_back(m.first);
 		K = classes.size();
 	}
-	
 	
 	
 	// Create map between classes and number of new output occurrences when moving along one split
@@ -310,10 +293,6 @@ class ClassificationTree : public TreeData<T, U>
 		return count;
 	}
 	
-	
-	
-	
-
 
 	// Initialise probabilities in first split for a given dimension
 	void initialFracs(std::unordered_map< U, std::pair<int, int> >& lf, 
@@ -339,10 +318,6 @@ class ClassificationTree : public TreeData<T, U>
 	}
 	
 
-
-
-
-
 	// Update fraction probabilites between successive splits along a given dimension
 	void updateFracs(std::unordered_map< U, std::pair<int, int> >& lf, 
 				std::unordered_map< U, std::pair<int, int> >& rf, std::size_t d,
@@ -364,19 +339,11 @@ class ClassificationTree : public TreeData<T, U>
 	}	
 	
 	
-	
-	
-	
-
 	// Convert numerator-denominator pair into decimal
 	double fracToDec(const std::pair<int, int>& fr)
 	{
 		return (double) fr.first / fr.second;
 	}
-	
-	
-	
-	
 	
 	
 	// Calculate self-information for a given probability
@@ -387,11 +354,7 @@ class ClassificationTree : public TreeData<T, U>
 		return -log(p); 
 	}
 	
-	
-	
-	
-	
-	
+
 	// Calculate weighted average entropy for a given split
 	double weightedEntropy(std::unordered_map< U, std::pair<int, int> > lf, 
 				std::unordered_map< U, std::pair<int, int> > rf, std::size_t& nPts)
@@ -410,10 +373,7 @@ class ClassificationTree : public TreeData<T, U>
 	}
 
 	
-	
-	
-	
-	// Along each dimension, calculate weighted average entropy of each split
+	// Along each dimension, calculate weighted average entropy of each split and hence return best split
 	std::pair<std::size_t, std::size_t> chooseSplit(std::vector< std::map< std::size_t, std::set< std::size_t> > >& inds,
 							std::unordered_map<U, std::size_t>& tal, std::size_t& nPts)
 	{
@@ -456,7 +416,6 @@ class ClassificationTree : public TreeData<T, U>
 	}
 	
 	
-	
 	// Split indices maps into corresponding branches from current node
 	std::tuple< std::size_t,
 				double,
@@ -483,6 +442,7 @@ class ClassificationTree : public TreeData<T, U>
 		auto stop = inds[dSplit].begin();
 		std::advance(stop, splitPnt);
 		
+		
 		// Iterate through region being separated by split
 		while (it->first != stop->first)
 		{
@@ -492,7 +452,6 @@ class ClassificationTree : public TreeData<T, U>
 			rInds[dSplit][pos] = set;			
 			inds[dSplit].erase(pos);
 			  		
-			
 			// Fill in amended index maps for the other dimensions
 			bool done = false;
 			for (std::size_t d = 0; d < this->D; ++d)
@@ -515,7 +474,7 @@ class ClassificationTree : public TreeData<T, U>
 						if (key != rInds[d].end())
 							key->second.insert(el);
 						else
-							rInds[d] [*loc]  = std::set<std::size_t>{el};
+							rInds[d][*loc]  = std::set<std::size_t>{el};
 				
 						// Remove index from set - if it leaves an empty set, then remove set from map
 						inds[d][*loc].erase(el);
@@ -539,9 +498,6 @@ class ClassificationTree : public TreeData<T, U>
 	}	
 
 
-
-	
- 
 	// Construct the right and left branches from a node and add current node to linked tree data structure
 	typename TreeData<T, U>::TreeNode* makeBranches(std::vector< std::map< std::size_t, std::set< std::size_t> > >& inds,
 						std::unordered_map<U, std::size_t>& tal, std::size_t& nPts)
@@ -569,7 +525,7 @@ class ClassificationTree : public TreeData<T, U>
 		
 		// Add current node to linked tree data structure
 		TreeNode* n = new TreeNode(dSplit, splitVal);  // create pointer to internal TreeNode object 
-		n->setL(nextL); n->setR(nextR);                      // set next pointers to child nodes
+		n->setL(nextL); n->setR(nextR);                // set next pointers to child nodes
 		return n;
 
 	}
@@ -620,10 +576,15 @@ template<typename T, typename U>
 class RegressionTree : public TreeData<T, U>
 {
 	
+	// MEMBER OBJECTS
+	
+	// totSum = sum of all output values, totSqSum = square sum of all output values
 	U totSum, totSqSum;
 	
 	
+	// METHODS
 	
+	// Calculate values of totSum and totSqSum
 	void totalSums()
 	{
 		totSum = 0; totSqSum = 0;
@@ -637,6 +598,8 @@ class RegressionTree : public TreeData<T, U>
 			}
 	}
 	
+	
+	// Sum and square sum for smallest example input(s) on a given dimension
 	void initialSums(U& sum, U& sqsum, U& lsum, U& rsum, U& lsqsum, U& rsqsum, 
 			const std::size_t& d,
 			std::vector< std::map< std::size_t, std::set< std::size_t> > >& inds) 
@@ -651,6 +614,8 @@ class RegressionTree : public TreeData<T, U>
 		rsqsum = sqsum - lsqsum;
 	}
 	
+	
+	// Update sum and square sum along a given dimension 
 	void updateSums(U& lsum, U& rsum, U& lsqsum, U& rsqsum, const std::size_t& d,
 			const std::map<std::size_t, std::set< std::size_t> >::iterator& it)
 	{
@@ -665,8 +630,7 @@ class RegressionTree : public TreeData<T, U>
 	}
 	
 	
-	
-
+	// Calculate weighted variance for a given split
 	double weightedVariance(U& lsum, U& rsum, U& lsqsum, U& rsqsum, 
 							std::size_t& nPts, std::size_t& lNPts)
 	{
@@ -681,12 +645,7 @@ class RegressionTree : public TreeData<T, U>
 	}	
 	
 	
-	
-	
-	
-	
-	
-	
+	// Along each dimension, calculate weighted variance of each split and hence return best split
 	std::pair<std::size_t, std::size_t> 
 			chooseSplit(std::vector< std::map< std::size_t, std::set< std::size_t> > >& inds,
 							U& sum, U& sqsum, std::size_t& nPts)
@@ -719,7 +678,6 @@ class RegressionTree : public TreeData<T, U>
 		return min;
 	}	
 	
-	
 
 	// Determine location and value of split
 	std::tuple< double, std::size_t, std::size_t >
@@ -733,8 +691,6 @@ class RegressionTree : public TreeData<T, U>
 	}	
 
 
-
-	
 	// Split indices maps into corresponding branches from current node
 	std::tuple< std::size_t,
 				double,
@@ -808,8 +764,6 @@ class RegressionTree : public TreeData<T, U>
 	}	
 	
 	
-	
-
 	// Check if a node is a leaf. If it is, also return output value at the leaf.
 	std::pair<bool, double> 
 		isLeaf(std::vector< std::map< std::size_t, std::set< std::size_t> > >& inds,
@@ -826,9 +780,6 @@ class RegressionTree : public TreeData<T, U>
 		}
 		return std::make_pair(false, 0);
 	}
-	
-	
-	
 	
 	
 	// Construct the right and left branches from a node and add current node to linked tree data structure
