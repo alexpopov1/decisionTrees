@@ -5,18 +5,19 @@
 #include <string>
 #include <fstream>
 
-/*
 
 int main()
 {
-	std::size_t N = 414, D = 6;	
+	// Define dataset size
+	std::size_t N = 414, D = 6;
+	
+	// Read file and construct dataset objects
 	std::ifstream inFile;
 	std::vector< std::vector<double> > inputs(N);
 	std::vector<double> outputs(N);
-	std::string file = "C:/Users/apbab/OneDrive/Documents/ML Datasets/real estate prices.csv";
+	std::string file = "real estate prices.csv";
 	inFile.open(file);
 	
-
 	if (inFile.is_open())
 	{
 		std::string str;
@@ -114,6 +115,6 @@ int main()
 	
 }
 
-	*/
+
 
 
