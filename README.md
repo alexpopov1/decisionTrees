@@ -5,4 +5,4 @@ An easy-to-use library to generate classification and regression trees (CART) fo
 Simply download the four header files in the 'src' folder. Ensure that all four files are saved in the same location on your computer.
 
 ## Creating a Classification Tree
-
+To create a classification tree called 'classTree', define the object `ClassificationTree<T, U> classTree(in, out)`
