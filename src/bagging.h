@@ -65,7 +65,7 @@ static inline std::pair< std::vector<Tr>, std::vector< std::set<std::size_t> > >
 		if constexpr (std::is_same< Tr, ClassificationTree<T,U> >::value)
 			trees[n].setImpurity(std::get<3>(props));
 		trees[n].buildTree();
-		std::cout << "made " << n+1 << '\n';
+		std::cout << "Constructed tree " << n+1 << '/' << nr << '\n';
 	}
 	return std::make_pair(trees, unusedSamples);
 	
@@ -95,8 +95,10 @@ class BaggedClassificationTrees
 	// Vector of sampled trees
 	std::vector< ClassificationTree<T, U> > trees;
 	
+	// Vector of unused samples, available for out of bag error calculation
 	std::vector< std::set<std::size_t> > unusedSamples;
 	
+	// Indicate impurity measure, with entropy as default
 	char impurity{'e'};
 	
 public:
@@ -196,6 +198,7 @@ class BaggedRegressionTrees
 	// Vector of sampled trees
 	std::vector< RegressionTree<T, U> > trees;
 	
+	// Vector of unused samples, available for out of bag error calculation
 	std::vector< std::set<std::size_t> > unusedSamples;
 
 	
