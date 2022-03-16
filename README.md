@@ -2,7 +2,7 @@
 An easy-to-use header-only library in C++ to generate classification and regression trees (CART) for datasets. The software provides flexibility when designing the predictor, with options to set and tune various hyperparameters, as well as to apply bagging (to reduce variance) and random feature selection (to prevent correlation between different sampled trees in bagging).
 
 ## Installation
-Simply download the four header files in the 'src' folder. Ensure that all four files are saved in the same location on your computer. <br/><br/>
+Simply download the four header files in the 'src' folder. Ensure that all four files are saved in the same location on your computer.<br/><br/>
 
 
 ## Classification Problems
@@ -30,7 +30,7 @@ To predict the class for some input variable `input`, use `classTree.predict(inp
 ### Classification Error 
 When testing the classifier with some test set of inputs `testInputs` and associated classes `testOutputs`, the mean classification error for the entire test set can be found as follows:
 * `classificationError< ClassificationTree<T, U> >(classTree, testInputs, testOutputs)` for the original classification tree.
-* `classificationError< BaggedClassificationTrees<T, U> >(baggedClassTrees, testInputs, testOutputs)` for the bagged trees.
+* `classificationError< BaggedClassificationTrees<T, U> >(baggedClassTrees, testInputs, testOutputs)` for the bagged trees.<br/><br/>
 
 
 ## Regression Problems
@@ -50,7 +50,7 @@ To predict the output value for some input variable `input`, use `regTree.predic
 ### Mean Squared Error
 When testing the model with some test set of inputs `testInputs` and associated output values `testOutputs`, the mean squared error averaged across the entire test set can be found as follows:
 * `meanSquareError< RegressionTree<T, U> >(regTree, testInputs, testOutputs)` for the original classification tree.
-* `meanSquareError< BaggedRegressionTrees<T, U> >(baggedRegTrees, testInputs, testOutputs)` for the bagged trees.
+* `meanSquareError< BaggedRegressionTrees<T, U> >(baggedRegTrees, testInputs, testOutputs)` for the bagged trees.<br/><br/>
 
 
 ## Creating a Test Set
