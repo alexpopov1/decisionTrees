@@ -11,9 +11,12 @@ Before the tree is built, you can set a couple of its properties:
 * `classTree.setImpurity('g')` will change the impurity measure from Shannon entropy (default) to Gini impurity. To change it back to entropy, simply use the character input `'e'` instead.
 The tree can then be constructed using `classTree.buildTree()`.
 
-### Creating Bagged Classification Trees
-To initialise a set 'baggedClassTrees' of *n* classification trees based on *n* samples from the dataset, define `BaggedClassificationTree<T, U> baggedClassTrees(in, out, n)`, where all parameters are defined as before. The maximum tree depth and impurity measure can be set just as for a single classification tree, and the set of trees can then be constructed with `baggedClassTrees.buildTrees()`. The out-of-bag classification error can be calculated with `baggedClassTrees.outOfBagError()`.
 
-### Adding Random Feature Selection to Bagged Trees
+### Creating Bagged Classification Trees
+To initialise a set 'baggedClassTrees' of *n* classification trees based on *n* samples from the dataset, define `BaggedClassificationTree<T, U> baggedClassTrees(in, out, n)`, where all parameters are defined as before. 
+The maximum tree depth and impurity measure can be set just as for a single classification tree, and additionally random feature selection can be applied at each node of each tree using `baggedClassTrees.setNrSelectedFeatures(f)`, where *f* is the number of features to be considered at each node (must be no greater than the total number of features of the dataset). The set of trees can then be constructed with `baggedClassTrees.buildTrees()`. 
+The out-of-bag classification error can be calculated with `baggedClassTrees.outOfBagError()`.
+
+
 
 
