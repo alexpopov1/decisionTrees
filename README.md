@@ -59,12 +59,11 @@ The library also lets you prepare a test set by holding out a certain percentage
 
 The first element of `pr` is the input-output pair of training examples, and the second element is the corresponding pair for the newly extracted test set. Hence:
 
-`std::vector< std::vector<T> > trainInputs = pr.first.first;`
-
-`std::vector<U> trainOutputs = pr.first.second;`
-
-`std::vector< std::vector<T> > testInputs = pr.second.first;`
-
-`std::vector<U> testOutputs = pr.second.second;`
+```
+std::vector< std::vector<T> > trainInputs = pr.first.first;
+std::vector<U> trainOutputs = pr.first.second;
+std::vector< std::vector<T> > testInputs = pr.second.first;
+std::vector<U> testOutputs = pr.second.second;
+```
 
 These newly defined objects can now be used to test the performance of your decision tree model.
