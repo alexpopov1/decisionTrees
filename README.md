@@ -10,16 +10,26 @@ To initialise a classification tree called 'classTree', define the object `Class
 Before the tree is built, you can set a couple of its properties:
 * `classTree.setMaxDepth(d)` will limit the tree depth to *d*.
 * `classTree.setImpurity('g')` will change the impurity measure from Shannon entropy (default) to Gini impurity. To change it back to entropy, simply use the character input `'e'` instead.
-* 
+
 The tree can then be constructed using `classTree.buildTree()`.
 
 
 ### Bagged Classification Trees
 To initialise a set 'baggedClassTrees' of *n* classification trees based on *n* samples from the dataset, define `BaggedClassificationTrees<T, U> baggedClassTrees(in, out, n)`, where all parameters are defined as before. 
 
-The maximum tree depth and impurity measure can be set just as for a single classification tree, and additionally random feature selection can be applied at each node of each tree using `baggedClassTrees.setNrSelectedFeatures(f)`, where *f* is the number of features to be considered at each node (must be no greater than the total number of features of the dataset). The set of trees can then be constructed with `baggedClassTrees.buildTrees()`. 
+The maximum tree depth and impurity measure can be set just as for a single classification tree, and additionally random feature selection can be applied at each node of each tree using `baggedClassTrees.setNrSelectedFeatures(f)`, where *f* is the number of features to be considered at each node (must be no greater than the total number of features of the dataset). 
+
+The set of trees can then be constructed with `baggedClassTrees.buildTrees()`. 
 
 The out-of-bag classification error can be calculated with `baggedClassTrees.outOfBagError()`.
+
+### Predictions
+To predict the class for some input variable `input`, use `classTree.predict(input)` and `baggedClassTrees.predict(input)` respectively for the two cases.
+
+### Classification Error 
+When testing the classifier with some test set of inputs `testInputs` and associated classes `testOutputs`, the mean classification error for the entire test set can be found as follows:
+* `classificationError< ClassificationTree<T, U> >(classTree, testInputs, testOutputs)` for the original classification tree.
+* `classificationError< BaggedClassificationTrees<T, U> >(baggedClassTrees, testInputs, testOutputs)` for the bagged trees.
 
 
 ## Regression Problems
@@ -33,3 +43,14 @@ Random feature selection can be incorporated just as for bagged classification t
 
 The out-of-bag mean squared error can be calculated with `baggedRegTrees.outOfBagError()`.
 
+### Predictions
+To predict the output value for some input variable `input`, use `regTree.predict(input)` and `baggedRegTrees.predict(input)` respectively for the two cases.
+
+### Mean Squared Error
+When testing the model with some test set of inputs `testInputs` and associated output values `testOutputs`, the mean squared error averaged across the entire test set can be found as follows:
+* `meanSquareError< RegressionTree<T, U> >(regTree, testInputs, testOutputs)` for the original classification tree.
+* `meanSquareError< BaggedRegressionTrees<T, U> >(baggedRegTrees, testInputs, testOutputs)` for the bagged trees.
+
+
+## Creating a Test Set
+The library also allows a 
