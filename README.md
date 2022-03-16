@@ -18,5 +18,7 @@ The maximum tree depth and impurity measure can be set just as for a single clas
 The out-of-bag classification error can be calculated with `baggedClassTrees.outOfBagError()`.
 
 
+## Regression Problems
+To initialise a regression tree called 'regTree', define the object `RegressionTree<T, U> regTree(in, out)`, where `in` is a collection of inputs of type `std::vector< std::vector<T> >` and `out` is the collection of corresponding outputs of type `std::vector<U>`. All subsequent methods work in exactly the same way as for classification trees (except for the impurity, which is fixed as mean squared error for all regression problems).
 
 
