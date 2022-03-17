@@ -2,7 +2,7 @@
 An easy-to-use header-only library in C++ to generate classification and regression trees (CART) for datasets. The software provides flexibility when designing the predictor, with options to set and tune various hyperparameters, as well as to apply bagging (to reduce variance) and random feature selection (to prevent correlation between different sampled trees in bagging).
 
 ## Installation
-Simply download the four header files in the 'src' folder. Ensure that all four files are saved in the same location on your computer.<br/><br/>
+Simply download the four header files in the 'src' folder. Ensure that all four files are saved in the same location on your computer. To use the library, you just need to write "#include "decisionTrees.h" at the start of your program (make sure it's in the same directory), and then you're ready to go!<br/><br/>
 
 
 ## Classification Problems
