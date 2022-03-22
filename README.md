@@ -3,19 +3,16 @@ An easy-to-use header-only library in C++ to generate classification and regress
 
 # Table of contents
 - [Installation](#install) 
-
 - [Classification Problems](#class) 
     * [Constructing a Classification Tree](#classt)
     * [Bagged Classification Trees](#bagclass) 
     * [Predictions](#bpred) 
     * [Classification Error](#cerror) 
-
 - [Regression Problems](#reg)
     * [Constructing a Regression Tree](#regt)
     * [Bagged Regression Trees](#breg)
     * [Predictions](#rpred)
     * [Mean Squared Error](#mse)
-
 - [Creating a Test Set](#test)
     
 ## Installation <a name="install"></a>
