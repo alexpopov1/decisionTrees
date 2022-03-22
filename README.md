@@ -90,5 +90,5 @@ std::vector<U> testOutputs = pr.second.second;
 These newly defined objects can now be used to test the performance of your decision tree model.<br/><br/>
 
 
-## Examples
+## Examples <a name=ex></a>
 The 'examples' folder contains a classification example (classification of dry beans) and a regression example (real estate prices). For each example folder, the csv file contains the dataset used, and the cpp file contains the code.
