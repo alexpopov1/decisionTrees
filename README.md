@@ -17,7 +17,7 @@ An easy-to-use header-only library in C++ to generate classification and regress
 - [Examples](#ex)
     
 ## Installation <a name="install"></a>
-Simply download the four header files in the 'src' folder. Ensure that all four files are saved in the same location on your computer. To use the library, you just need to write `#include "decisionTrees.h"` at the start of your program (make sure it's in the same directory), and then you're ready to go!<br/><br/>
+Simply download the four header files in the ['src' folder](https://github.com/alexpopov1/decision-trees/tree/main/src). Ensure that all four files are saved in the same location on your computer. To use the library, you just need to write `#include "decisionTrees.h"` at the start of your program (make sure it's in the same directory), and then you're ready to go!<br/><br/>
 
 
 ## Classification Problems <a name="class"></a>
@@ -91,4 +91,4 @@ These newly defined objects can now be used to test the performance of your deci
 
 
 ## Examples <a name=ex></a>
-The ['examples'](https://github.com/alexpopov1/decision-trees/tree/main/examples) folder contains a [classification example (classification of dry beans)](https://github.com/alexpopov1/decision-trees/tree/main/examples/classification) and a [regression example (real estate prices)](https://github.com/alexpopov1/decision-trees/tree/main/examples/regression). For each example folder, the csv file contains the dataset used, and the cpp file contains the code.
+The ['examples' folder](https://github.com/alexpopov1/decision-trees/tree/main/examples) contains a [classification example (classification of dry beans)](https://github.com/alexpopov1/decision-trees/tree/main/examples/classification) and a [regression example (real estate prices)](https://github.com/alexpopov1/decision-trees/tree/main/examples/regression). For each example folder, the csv file contains the dataset used, and the cpp file contains the code.
