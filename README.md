@@ -2,17 +2,18 @@
 An easy-to-use header-only library in C++ to generate classification and regression trees (CART) for datasets. The software provides flexibility when designing the predictor, with options to set and tune various hyperparameters, as well as to apply bagging (to reduce variance) and random feature selection (to prevent correlation between different sampled trees in bagging).
 
 # Table of contents
-[Installation](#install) <br/>
+[Installation](#install) 
+
 [Classification Problems](#class) 
-- [Bagged Classification Trees](#bagclass) <br/>
-- [Predictions](#bpred) <br/>
+- [Bagged Classification Trees](#bagclass) 
+- [Predictions](#bpred) 
 - [Classification Error](#cerror) 
 
-[Regression Problems](#reg)<br/>
-- [Bagged Regression Trees](#breg)<br/>
-- [Predictions](#rpred)<br/>
-- [Mean Squared Error](#mse)<br/>
-[Creating a Test Set](#test)<br/>
+[Regression Problems](#reg)
+- [Bagged Regression Trees](#breg)
+- [Predictions](#rpred)
+- [Mean Squared Error](#mse)
+[Creating a Test Set](#test)
     
 ## Installation <a name="install"></a>
 Simply download the four header files in the 'src' folder. Ensure that all four files are saved in the same location on your computer. To use the library, you just need to write `#include "decisionTrees.h"` at the start of your program (make sure it's in the same directory), and then you're ready to go!<br/><br/>
