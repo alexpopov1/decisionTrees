@@ -5,6 +5,7 @@ An easy-to-use header-only library in C++ to generate classification and regress
 [Installation](#install) 
 
 [Classification Problems](#class) 
+- [Constructing a Classification Tree](#classt)
 - [Bagged Classification Trees](#bagclass) 
 - [Predictions](#bpred) 
 - [Classification Error](#cerror) 
@@ -21,6 +22,9 @@ Simply download the four header files in the 'src' folder. Ensure that all four 
 
 
 ## Classification Problems <a name="class"></a>
+
+
+### Constructing a Classification Tree <a name="classt"</a>
 To initialise a classification tree called 'classTree', define the object `ClassificationTree<T, U> classTree(in, out)`, where `in` is a collection of inputs of type `std::vector< std::vector<T> >` and `out` is the collection of corresponding outputs of type `std::vector<U>`. 
 
 Before the tree is built, you can set a couple of its properties:
