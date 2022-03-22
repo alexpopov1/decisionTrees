@@ -14,7 +14,8 @@ An easy-to-use header-only library in C++ to generate classification and regress
     * [Predictions](#rpred)
     * [Mean Squared Error](#mse)
 - [Creating a Test Set](#test)
-- [Examples](#ex)
+- [Examples](#ex)<br/><br/>
+    
     
 ## Installation <a name="install"></a>
 Simply download the four header files in the [src folder](https://github.com/alexpopov1/decision-trees/tree/main/src). Ensure that all four files are saved in the same location on your computer. To use the library, you just need to write `#include "decisionTrees.h"` at the start of your program (make sure it's in the same directory), and then you're ready to go!<br/><br/>
