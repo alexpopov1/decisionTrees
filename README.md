@@ -91,4 +91,4 @@ These newly defined objects can now be used to test the performance of your deci
 
 
 ## Examples <a name=ex></a>
-The 'examples' folder contains a classification example (classification of dry beans) and a regression example (real estate prices). For each example folder, the csv file contains the dataset used, and the cpp file contains the code.
+The ['examples'](https://github.com/alexpopov1/decision-trees/tree/main/examples) folder contains a [classification example (classification of dry beans)](https://github.com/alexpopov1/decision-trees/tree/main/examples/classification) and a [regression example (real estate prices)](https://github.com/alexpopov1/decision-trees/tree/main/examples/regression). For each example folder, the csv file contains the dataset used, and the cpp file contains the code.
