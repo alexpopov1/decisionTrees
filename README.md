@@ -91,4 +91,4 @@ These newly defined objects can now be used to test the performance of your deci
 
 
 ## Examples
-The 'examples' folder 
+The 'examples' folder contains a classification example (classification of dry beans) and a regression example (real estate prices). For each example folder, the csv file contains the dataset used, and the cpp file contains the code.
