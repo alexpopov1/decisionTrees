@@ -11,6 +11,7 @@ An easy-to-use header-only library in C++ to generate classification and regress
 - [Classification Error](#cerror) 
 
 [Regression Problems](#reg)
+- [Constructing a Regression Tree](#regt)
 - [Bagged Regression Trees](#breg)
 - [Predictions](#rpred)
 - [Mean Squared Error](#mse)
@@ -24,7 +25,7 @@ Simply download the four header files in the 'src' folder. Ensure that all four 
 ## Classification Problems <a name="class"></a>
 
 
-### Constructing a Classification Tree <a name="classt"</a>
+### Constructing a Classification Tree <a name="classt"></a>
 To initialise a classification tree called 'classTree', define the object `ClassificationTree<T, U> classTree(in, out)`, where `in` is a collection of inputs of type `std::vector< std::vector<T> >` and `out` is the collection of corresponding outputs of type `std::vector<U>`. 
 
 Before the tree is built, you can set a couple of its properties:
@@ -53,6 +54,8 @@ When testing the classifier with some test set of inputs `testInputs` and associ
 
 
 ## Regression Problems <a name="reg"></a>
+
+### Constructing a Regression Tree <a name="regt"></a>
 To initialise a regression tree called 'regTree', define the object `RegressionTree<T, U> regTree(in, out)`, where `in` is a collection of inputs of type `std::vector< std::vector<T> >` and `out` is the collection of corresponding outputs of type `std::vector<U>`. All subsequent methods work in exactly the same way as for classification trees (except for the impurity, which is fixed as mean squared error for all regression problems).
 
 
