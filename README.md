@@ -13,6 +13,7 @@ An easy-to-use header-only library in C++ to generate classification and regress
 - [Bagged Regression Trees](#breg)
 - [Predictions](#rpred)
 - [Mean Squared Error](#mse)
+
 [Creating a Test Set](#test)
     
 ## Installation <a name="install"></a>
