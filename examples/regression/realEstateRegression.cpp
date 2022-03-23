@@ -13,7 +13,7 @@ int main()
 	std::ifstream inFile;
 	std::vector< std::vector<double> > inputs(N);
 	std::vector<double> outputs(N);
-	std::string file = "C:/Users/apbab/OneDrive/Documents/ML Datasets/real estate prices.csv";
+	std::string file = "real estate prices.csv";
 	inFile.open(file);
 	
 
