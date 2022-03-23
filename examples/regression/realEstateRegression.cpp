@@ -9,11 +9,13 @@
 
 int main()
 {
-	// Open file - example taken from UCI machine learning repository
+	// Prepare dataset objects
 	std::size_t N = 414, D = 6;	
-	std::ifstream inFile;
 	std::vector< std::vector<double> > inputs(N);
 	std::vector<double> outputs(N);
+	
+	// Open file - example taken from UCI machine learning repository
+	std::ifstream inFile;
 	std::string file = "real estate prices.csv";
 	inFile.open(file);
 	
