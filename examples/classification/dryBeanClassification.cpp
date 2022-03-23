@@ -15,7 +15,7 @@ int main()
 	std::vector<std::string> outputs(N);
 	
 	// Open file - example taken from UCI machine learning repository
-	std::string file = "C:/Users/apbab/OneDrive/Documents/ML Datasets/dry beans.csv";
+	std::string file = "dry beans.csv";
 	inFile.open(file);
 	
 	// Read file
