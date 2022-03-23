@@ -1,4 +1,4 @@
-// NOTE: This is the only header file which needs to be included for use of DecisionTrees.
+// NOTE: This is the only header file which needs to be included for use of decisionTrees.
 
 #ifndef _DTREES_
 #define _DTREES_
