@@ -10,11 +10,11 @@ int main()
 {
 	// Prepare dataset objects
 	std::size_t N = 13611, D = 16;	
-	std::ifstream inFile;
 	std::vector< std::vector<double> > inputs(N);
 	std::vector<std::string> outputs(N);
 	
 	// Open file - example taken from UCI machine learning repository
+	std::ifstream inFile;
 	std::string file = "dry beans.csv";
 	inFile.open(file);
 	
