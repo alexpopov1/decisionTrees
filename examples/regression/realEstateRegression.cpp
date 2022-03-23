@@ -9,6 +9,7 @@
 
 int main()
 {
+	// Open file - example taken from UCI machine learning repository
 	std::size_t N = 414, D = 6;	
 	std::ifstream inFile;
 	std::vector< std::vector<double> > inputs(N);
@@ -16,7 +17,7 @@ int main()
 	std::string file = "real estate prices.csv";
 	inFile.open(file);
 	
-
+	// Read file
 	if (inFile.is_open())
 	{
 		std::string str;
